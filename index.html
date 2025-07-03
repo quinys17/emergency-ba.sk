@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ZZS BA</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  /* Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+  body {
+    background: #f5f7fa;
+    color: #001f4d;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  a {
+    color: #ffd700;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #e6c200;
+  }
+
+  header {
+    background-color: #001f4d;
+    color: #ffd700;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  header h1 {
+    font-weight: 900;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+  nav a {
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.5rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  nav a:hover {
+    background-color: #ffd700;
+    color: #001f4d;
+    border-radius: 5px;
+  }
+
+  .hero {
+    background: linear-gradient(rgba(0,31,77,0.6), rgba(0,31,77,0.6)), url('uvod.jpg') no-repeat center/cover;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffd700;
+    padding: 0 1rem;
+  }
+  .hero h2 {
+    font-size: 3rem;
+    font-weight: 900;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  main {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    flex-grow: 1;
+  }
+
+  section {
+    margin-bottom: 4rem;
+  }
+  section h3 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    border-bottom: 3px solid #ffd700;
+    display: inline-block;
+    padding-bottom: 0.3rem;
+  }
+
+  /* Naše služby */
+  #services {
+    background: linear-gradient(rgba(0,31,77,0.75), rgba(0,31,77,0.75)), url('sluzby.jpg') no-repeat center/cover;
+    color: #ffd700;
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,31,77,0.3);
+  }
+  .service-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+  .service-item {
+    background: rgba(255,255,255,0.15);
+    border-left: 6px solid #ffd700;
+    flex: 1 1 280px;
+    padding: 1.5rem 1.8rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    color: #fff;
+    transition: background-color 0.3s ease;
+    cursor: default;
+  }
+  .service-item:hover {
+    background: rgba(255,255,255,0.3);
+  }
+  .service-item h4 {
+    margin-bottom: 0.7rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  .service-item p {
+    font-size: 1rem;
+  }
+
+  /* Aktuality */
+  #news {
+    background: linear-gradient(rgba(0,31,77,0.75), rgba(0,31,77,0.75)), url('./images/news-bg.png') no-repeat center/cover;
+    color: #ffd700;
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,31,77,0.3);
+  }
+  .news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .news-item {
+    background: rgba(255,255,255,0.15);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  .news-item:hover {
+    background: rgba(255,255,255,0.3);
+  }
+  .news-item h4 {
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+  .news-item p {
+    font-size: 1rem;
+  }
+
+  /* O nás */
+  #about {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto 4rem;
+    padding: 0 1rem;
+  }
+  #about img {
+    max-width: 400px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,31,77,0.3);
+  }
+  #about div {
+    flex: 1;
+    color: #001f4d;
+  }
+  #about h3 {
+    color: #001f4d;
+    border-bottom: 3px solid #ffd700;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1rem;
+  }
+  #about p {
+    font-size: 1.1rem;
+  }
+
+  /* Kontakt */
+  #contact {
+    max-width: 600px;
+    margin: 0 auto 3rem;
+  }
+  #contact h3 {
+    margin-bottom: 1rem;
+  }
+  #contact p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+  /* Nový štýl pre pracovné ponuky */
+  .job-positions {
+    background: #001f4d;
+    color: #ffd700;
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,31,77,0.5);
+    margin-bottom: 2rem;
+  }
+  .job-positions h4 {
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+  }
+  .job-positions p {
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  form {
+    background: #001f4d;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,31,77,0.5);
+    color: #ffd700;
+  }
+  form label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 700;
+  }
+  form input, form textarea, form select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+  form input:focus, form textarea:focus, form select:focus {
+    outline: 3px solid #ffd700;
+    background: #fff;
+    color: #000000;
+  }
+  form textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  form button {
+    background-color: #ffd700;
+    color: #000000;
+    font-weight: 900;
+    font-size: 1.1rem;
+    border: none;
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+  }
+  form button:hover {
+    background-color: #e6c200;
+  }
+
+  #statusMessage {
+    margin-top: 1rem;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  footer {
+    background-color: #001f4d;
+    color: #ffd700;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    nav ul {
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: 0.5rem;
+    }
+    .hero h2 {
+      font-size: 2.2rem;
+    }
+    #about {
+      flex-direction: column;
+    }
+    #about img {
+      max-width: 100%;
+    }
+    .service-list {
+      flex-direction: column;
+    }
+    .news-list {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h3>ZÁCHRANNÁ ZDRAVOTNÁ SLUŽBA BRATISLAVA</h3>
+  <nav>
+    <ul>
+      <li><a href="#services">Naše služby</a></li>
+      <li><a href="#about">O nás</a></li>
+      <li><a href="#job">Pracovné pozície</a></li>
+      <li><a href="#contactForm">Chcem sa pridať</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Zdravotná záchranná služba Bratislava - Vitajte. </h2>
+</section>
+
+<main>
+
+<section id="services">
+  <h3>Naše služby</h3>
+  <div class="service-list">
+    <div class="service-item">
+      <h4>Rýchla zdravotná pomoc</h4>
+      <p>Zabezpečujeme urgentnú prepravu a prvú pomoc pacientom v Bratislave.</p>
+    </div>
+    <div class="service-item">
+      <h4>Záchrana ľudských životov</h4>
+      <p>Naši kvalifikovaní zdravotní záchranári sú pripravení zasiahnuť v každej situácii.</p>
+    </div>
+    <div class="service-item">
+      <h4>Vozidlá na vysokej úrovni</h4>
+      <p>Disponujeme modernými vozidlami vybavenými najnovšou zdravotníckou technikou.</p>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <img src="teamzzs.jpg" alt="Tím Emergency BA" />
+  <div>
+    <h3>O nás</h3>
+    <p>Záchranná zdravotná služba je profesionálny tím zdravotníckych záchranárov a vodičov, ktorý sa stará o rýchlu a efektívnu pomoc pacientom v Bratislave a okolí. Sme pripravení zasiahnuť 24/7 a zabezpečiť vám bezpečnú prepravu a zdravotnú starostlivosť.</p>
+  </div>
+  
+</section>
+<section id="job">
+  <div class="job-positions">
+  <h1>Pracovné pozície
+  <h3> U nás môžeš pracovať na týchto pozíciach
+    <p><strong>Vodič - Záchranár:</strong> Zodpovednosť za bezpečnú a rýchlu prepravu pacientov, základná zdravotná príprava, schopnosť práce v tíme a pod tlakom.</p>
+    <p><strong>Zdravotnícky Záchranár:</strong> Poskytovanie prvej pomoci a neodkladnej zdravotnej starostlivosti, spolupráca s tímom a riadenie zdravotníckej techniky.</p>
+  </div>
+</section>
+
+  <form id="contactForm">
+    <label for="name">Meno a priezvisko</label>
+    <input type="text" id="name" name="name" required />
+
+    <label for="email">E-mail</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="phone">Telefón (Nedávajte svoje číslo)</label>
+    <input type="tel" id="phone" name="phone" required pattern="[0-9+ ]{6,15}" placeholder="+421 900 123 456" />
+
+    <label for="position">Vyberte pozíciu</label>
+    <select id="position" name="position" required>
+      <option value="" disabled selected>-- Vyberte pozíciu --</option>
+      <option value="Vodič - Záchranár">Vodič - Záchranár</option>
+      <option value="Zdravotnícky Záchranár">Zdravotnícky Záchranár</option>
+    </select>
+
+    <label for="message">Správa</label>
+    <textarea id="message" name="message" required></textarea>
+
+    <button type="submit">Odoslať</button>
+  </form>
+
+  <div id="statusMessage"></div>
+</section>
+
+</main>
+
+<footer>
+  2025 Záchranná zdravotná služba - made by quiny
+</footer>
+
+<script>
+const webhookURL = 'https://discord.com/api/webhooks/1390383324240941277/L6xN7xDGXHzG8ulKaioD2zr4NYXmwdDdjoAIqlPseXKMq5SX-8d8xFLmKtZl6ey3hBTW';
+
+const form = document.getElementById('contactForm');
+const statusMessage = document.getElementById('statusMessage');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const name = form.name.value.trim();
+  const email = form.email.value.trim();
+  const phone = form.phone.value.trim();
+  const position = form.position.value;
+  const message = form.message.value.trim();
+
+  if (!name || !email || !phone || !position || !message) {
+    statusMessage.textContent = 'Prosím, vyplňte všetky povinné polia.';
+    statusMessage.style.color = 'red';
+    return;
+  }
+
+  const contentEmbed = {
+  embeds: [
+    {
+      title: `Nová žiadosť o pracovnú pozíciu: ${position}`,
+      color: 5814783, // napr. modrozelená farba
+      fields: [
+        { name: 'Meno', value: name, inline: true },
+        { name: 'Email', value: email, inline: true },
+        { name: 'Telefón', value: phone, inline: true },
+        { name: 'Správa', value: message }
+      ],
+      timestamp: new Date().toISOString()
+    }
+  ]
+};
+
+const res = await fetch(webhookURL, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(contentEmbed)
+});
+
+  try {
+    const res = await fetch(webhookURL, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({content}),
+    });
+
+    if (res.ok) {
+      statusMessage.textContent = 'Ďakujeme! Vaša správa bola odoslaná.';
+      statusMessage.style.color = '#0f0';
+      form.reset();
+    } else {
+      statusMessage.textContent = 'Správa bola úspešne odoslaná';
+      statusMessage.style.color = 'red';
+    }
+  } catch (error) {
+    statusMessage.textContent = 'Správa bola odoslaná';
+    statusMessage.style.color = 'green';
+  }
+});
+</script>
+
+</body>
+</html>
